@@ -12,8 +12,9 @@ const CheckedBookItem = ({ checked, book, index }: CheckedBookItemProps) => {
       <CheckedAnimation
         src={checked}
         alt="checked"
-        className="gif"
-        data-index={index}
+        className="fade"
+        data-y="0"
+        data-delay={index}
       />
       <Image src={book} alt="book" />
     </Container>

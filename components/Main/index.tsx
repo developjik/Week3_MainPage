@@ -8,12 +8,12 @@ const Main = () => {
         {MAIN_CONTENT_TEXT.map((data) => (
           <Title key={data[0]} color={data[1]}>
             {data[1] ? (
-              <div className="fade-up">
+              <div className="fade">
                 <span>{data[0].substring(0, data[0].length - 1)}</span>
                 {data[0][data[0].length - 1]}
               </div>
             ) : (
-              <div className="fade-up">{data[0]}</div>
+              <div className="fade">{data[0]}</div>
             )}
           </Title>
         ))}

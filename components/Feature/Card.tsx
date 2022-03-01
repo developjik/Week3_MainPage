@@ -22,12 +22,12 @@ const Card = ({ isPc, isTablet }: CardProps) => {
 
   return (
     <>
-      {cardList.map((element) => (
+      {cardList.map((element, index) => (
         <Container
           key={element}
+          className="fade"
+          data-delay={index}
           data-test-id="Feature:Card"
-          data-aos="fade-up"
-          data-aos-delay={`${element * 500}`}
         >
           <Icon
             data-test-id="Feature:CardIcon"

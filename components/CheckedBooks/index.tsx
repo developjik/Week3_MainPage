@@ -8,8 +8,8 @@ const CheckedBooks = ({ isTablet, isPc }: UseMediaInterface) => {
     <Container>
       <Wrapper>
         <TextContainer>
-          <Title className="fade-up">{CheckedBooksTitle(isPc, isTablet)}</Title>
-          <Text className="fade-up">{CheckedBooksText(isPc, isTablet)}</Text>
+          <Title className="fade">{CheckedBooksTitle(isPc, isTablet)}</Title>
+          <Text className="fade">{CheckedBooksText(isPc, isTablet)}</Text>
         </TextContainer>
         <CheckedBookImage />
       </Wrapper>

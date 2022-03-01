@@ -4,36 +4,32 @@ import Head from 'next/head';
 import type { AppProps } from 'next/app';
 import { ThemeProvider } from 'styled-components';
 import { device } from 'styles/Mixin';
-import AOS from 'aos';
-import 'aos/dist/aos.css';
 
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 
-const AOSCONFIG: AOS.AosOptions = {
-  delay: 250,
-  duration: 500,
-  once: false,
-  mirror: true,
-  easing: 'ease-in-out',
-};
-
-const delayGifFunc = (elem: any) => {
+const gsapFunc = (elem: any) => {
   let delay = 0;
+  let y = 100;
   elem.style.opacity = '0';
+
+  if (elem.dataset.y) {
+    y = elem.dataset.y;
+  }
+
+  if (elem.dataset.delay) {
+    delay = elem.dataset.delay * 0.25;
+  }
 
   if (elem.src) {
     elem.src = elem.src.substring(0, elem.src.length - 3) + 'gif';
-
-    if (elem.dataset) {
-      delay = elem.dataset.index * 0.25;
-    }
   }
 
   gsap.fromTo(
     elem,
-    { opacity: 0, autoAlpha: 0 },
+    { y: y, opacity: 0, autoAlpha: 0 },
     {
+      y: 0,
       duration: 1.5,
       delay: delay,
       opacity: 1,
@@ -44,55 +40,20 @@ const delayGifFunc = (elem: any) => {
   );
 };
 
-const gsapFunc = (y: number, elem: any) => {
-  elem.style.transform = `translate(0px, ${y}px)`;
-  elem.style.opacity = '0';
-  if (elem.src) {
-    elem.src = elem.src.substring(0, elem.src.length - 3) + 'gif';
-  }
-  gsap.fromTo(
-    elem,
-    { y: y, opacity: 0, autoAlpha: 0 },
-    {
-      y: 0,
-      duration: 1.5,
-      opacity: 1,
-      autoAlpha: 1,
-      ease: 'ease-in-out',
-      overwrite: 'auto',
-    }
-  );
-};
-
 function MyApp({ Component, pageProps }: AppProps) {
   useEffect(() => {
-    AOS.init(AOSCONFIG);
     gsap.registerPlugin(ScrollTrigger);
 
-    const fadeUp = gsap.utils.toArray('.fade-up');
-    fadeUp.forEach((elem: any) => {
+    const fade = gsap.utils.toArray('.fade');
+    fade.forEach((elem: any) => {
       ScrollTrigger.create({
         trigger: elem,
         onEnter: () => {
-          gsapFunc(100, elem);
+          gsapFunc(elem);
         },
         scrub: true,
         onEnterBack: () => {
-          gsapFunc(-100, elem);
-        },
-      });
-    });
-
-    const deplayGif = gsap.utils.toArray('.gif');
-    deplayGif.forEach((elem: any) => {
-      ScrollTrigger.create({
-        trigger: elem,
-        onEnter: () => {
-          delayGifFunc(elem);
-        },
-        scrub: true,
-        onEnterBack: () => {
-          delayGifFunc(elem);
+          gsapFunc(elem);
         },
       });
     });

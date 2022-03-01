@@ -19,7 +19,7 @@ const Download = ({ isPc }: DownloadProps) => {
   return (
     <Container>
       <Wrapper>
-        <Title className="fade-up">{DONWLOAD_TITLE}</Title>
+        <Title className="fade">{DONWLOAD_TITLE}</Title>
         <ContentsContainer>
           <ContentsWrapper data-test-id="Download:coupon">
             <ContentLeft>
@@ -39,15 +39,16 @@ const Download = ({ isPc }: DownloadProps) => {
             </ContentLeft>
             <ContentRight>
               <ContentRightText
-                data-aos="new-animation"
-                data-aos-delay="900"
+                className="fade"
+                data-y="-150"
+                data-delay="5"
                 fontSize={DOWNLOAD_CONTENT_TEXT[2].fontSize}
                 lineHeight={DOWNLOAD_CONTENT_TEXT[2].lineHeight}
               >
                 {DOWNLOAD_CONTENT_TEXT[2].text}
               </ContentRightText>
 
-              <Button data-aos="new-animation">
+              <Button className="fade" data-y="50">
                 <ButtonImage
                   src="assets/Download/download-btn.png"
                   alt="download"

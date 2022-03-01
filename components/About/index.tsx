@@ -10,15 +10,15 @@ const About = ({ isPc }: AboutProps) => {
     <Container data-test-id="About">
       <div>
         <Image
-          className="fade-up gif"
+          className="fade"
           src="/assets/About/second-logo.png"
           alt="logo"
           loading="lazy"
           data-test-id="About:logo"
         />
       </div>
-      <Title className="fade-up">땅콩스쿨이란?</Title>
-      <Text className="fade-up">{AboutText(isPc)}</Text>
+      <Title className="fade">땅콩스쿨이란?</Title>
+      <Text className="fade">{AboutText(isPc)}</Text>
     </Container>
   );
 };
