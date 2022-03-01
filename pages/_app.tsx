@@ -18,7 +18,7 @@ const gsapFunc = (elem: any) => {
   }
 
   if (elem.dataset.delay) {
-    delay = elem.dataset.delay * 0.25;
+    delay = elem.dataset.delay * 0.33;
   }
 
   if (elem.src) {
