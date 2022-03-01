@@ -11,7 +11,7 @@ const About = ({ isPc }: AboutProps) => {
       <div>
         <Image
           className="fade"
-          src="/assets/About/second-logo.png"
+          src="/assets/About/second-logo.gif"
           alt="logo"
           loading="lazy"
           data-test-id="About:logo"
